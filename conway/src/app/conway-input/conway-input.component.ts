@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-conway-input',
@@ -8,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 export class ConwayInputComponent implements OnInit {
 
   fieldSize: number;
-  constructor() { }
+  constructor(private router: Router) {
+
+   }
 
   ngOnInit() {
+  }
+
+  btnClick() : void {
+    this.router.navigate(["/field/", this.fieldSize]);
   }
 
 }

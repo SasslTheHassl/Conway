@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { FieldService } from '../field.service';
 
 @Component({
   selector: 'app-conway-field',
@@ -7,10 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConwayFieldComponent implements OnInit {
 
-  constructor() { }
+  fieldSize: number;
+
+  constructor(
+    private route: ActivatedRoute,
+    public fieldService: FieldService
+  ) {
+    this.fieldSize = +this.route.snapshot.paramMap.get("size");
+    fieldService.createField(this.fieldSize);
+  }
 
   ngOnInit() {
   }
+
+
 
 
 }
